@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Sign-In</title>
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="176461764838-sgap1f1guvgel4q5clv62rp34dn2nh7d.apps.googleusercontent.com">
+
+
+    <!-- 
+
+AIzaSyAcL64LYkm32zChOEOnAubkDipRPvSkdc8
+
+    id cliente
+    
+
+    176461764838-sgap1f1guvgel4q5clv62rp34dn2nh7d.apps.googleusercontent.com
+-->
+
+
+</head>
+
+<body>
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+    <script>
+        function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            var id_token = googleUser.getAuthResponse().id_token;
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/google');
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onload = function() {
+
+                if (xhr.status != 200) {
+                    window.alert('Error : ' + JSON.parse(xhr.responseText).err.message);
+                } else {
+                    window.alert('Signed in as: ' + JSON.parse(xhr.responseText).usuario.nombre);
+                }
+
+            };
+
+            xhr.send('idtoken=' + id_token);
+        }
+    </script>
+
+    <a href="#" onclick="signOut();">Salir</a>
+    <script>
+        function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function() {
+                    console.log('User signed out.');
+                })
+                .catch(function(err) {
+                    console.log(err);
+                });
+        }
+    </script>
+</body>
+
+</html>

@@ -5,7 +5,6 @@ let verificaRolAdmin = (req, res, next) => {
 
     let usuario = req.usuario;
 
-    console.log(usuario);
     if (usuario.role != 'ADMIN_ROLE') {
         return res.status(401).json({
             ok: false,
@@ -17,21 +16,6 @@ let verificaRolAdmin = (req, res, next) => {
     }
     next();
 
-    /*jwt.verify(token, process.env.SEED, (err, decoded) => {
-
-        if (err) {
-            return res.status(401).json({
-                ok: false,
-                err: {
-                    message: 'Token no valido'
-                }
-            });
-        }
-
-        req.usuario = decoded.usuario;
-        next();
-
-    });*/
 };
 
 
@@ -46,7 +30,7 @@ let verificaTk = (req, res, next) => {
             return res.status(401).json({
                 ok: false,
                 err: {
-                    message: 'Token no valido'
+                    message: 'Token no validos'
                 }
             });
         }
