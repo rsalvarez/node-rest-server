@@ -59,7 +59,7 @@ app.post('/login', (req, res) => {
 
 
 async function verify(token) {
-    console.log(process.env.SEED);
+
     const ticket = await client.verifyIdToken({
         idToken: token,
         audience: process.env.CLIENT_ID, // Specify the CLIENT_ID of the app that accesses the backend
