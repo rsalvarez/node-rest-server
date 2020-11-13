@@ -66,6 +66,8 @@ async function verify(token) {
         //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
     });
 
+    console.log(ticket);
+
     const payload = ticket.getPayload();
     const userid = payload['sub'];
     return {
@@ -88,7 +90,7 @@ app.post('/google', async(req, res) => {
             })
 
         });
-
+    console.log(googleUser);
     Usuario.findOne({ email: googleUser.email }, (err, usuarioDB) => {
         if (err) {
             return res - status(400).json({
