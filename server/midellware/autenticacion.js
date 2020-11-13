@@ -24,6 +24,7 @@ let verificaRolAdmin = (req, res, next) => {
 let verificaTk = (req, res, next) => {
 
     let token = req.get('Authorization');
+    console.log(token);
     jwt.verify(token, process.env.SEED, (err, decoded) => {
 
         if (err) {
