@@ -92,7 +92,7 @@ app.put('/usuario/:id', [verificaTk, verificaRolAdmin], function(req, res) {
 app.delete('/usuario/:id', [verificaTk, verificaRolAdmin], function(req, res) {
     let id = req.params.id;
 
-    Usuario.findByIdAndUpdate(id, { estado: false, }, (err, usuarioActualizado) => {
+    Usuario.findByIdAndUpdate(id, { estado: false }, (err, usuarioActualizado) => {
 
         if (err) {
             return res.status(400).json({
