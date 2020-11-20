@@ -16,7 +16,7 @@ app.get('/imagen/:tipo/:id', verificaTk, (req, res) => {
 
     let pathNoImagen = path.resolve(__dirname, `../assests/no-image.jpg`);
 
-
+    console.log(pathNoImagen);
 
     if (tipo === 'producto') {
         Producto.findById(id, (err, productoDb) => {
