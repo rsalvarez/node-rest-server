@@ -10,6 +10,7 @@ const path = require('path');
 const { verificaTk } = require('../midellware/autenticacion');
 
 app.get('/imagen/:tipo/:id', verificaTk, (req, res) => {
+
     let tipo = req.params.tipo;
     let id = req.params.id;
 
