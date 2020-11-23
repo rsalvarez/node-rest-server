@@ -66,7 +66,8 @@ app.put('/upload/:tipo/:id', function(req, res) {
 
     console.log('Completo : ' + nombreArchivo);
 
-    archivo.mv(`server/uploads/${ tipo }/${ nombreArchivo }`, (err) => {
+    //archivo.mv(`server/uploads/${ tipo }/${ nombreArchivo }`, (err) => {
+    archivo.mv(nombreArchivo, (err) => {
 
         if (err)
             return res.status(500).json({
