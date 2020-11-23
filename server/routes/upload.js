@@ -156,7 +156,7 @@ function imagenProducto(id, res, nombreArchivo) {
                 }
             });
         }
-        borraArchivo(productoDb.img, 'producto')
+        //borraArchivo(productoDb.img, 'producto')
         productoDb.img = nombreArchivo;
 
         productoDb.save((err, productoDbGrabado) => {
