@@ -34,8 +34,10 @@ app.get('/imagen/:tipo/:id', verificaTk, (req, res) => {
                     }
                 });
             }
+
+            console.log(`El pat relativo : ${tipo}/${productoDb.img}`);
             let pathUrl = path.resolve(__dirname, `${tipo}/${productoDb.img}`);
-            console.log('el path' + pathUrl);
+            console.log('el path absoluto ' + pathUrl);
             if (fs.existsSync(pathUrl)) {
                 res.sendFile(pathUrl);
             } else {
