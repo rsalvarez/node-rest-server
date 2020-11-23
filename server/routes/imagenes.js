@@ -9,7 +9,7 @@ const fs = require('fs');
 const path = require('path');
 const { verificaTk } = require('../midellware/autenticacion');
 
-app.get('/imagen/:tipo/:img', (req, res) => {
+app.get('/imagen/:tipo/:img', verificaTk, (req, res) => {
     let tipo = req.params.tipo;
     let img = req.params.img;
 

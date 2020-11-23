@@ -67,7 +67,7 @@ app.put('/upload/:tipo/:id', function(req, res) {
     console.log('Completo : ' + nombrepath);
 
     //archivo.mv(`server/uploads/${ tipo }/${ nombreArchivo }`, (err) => {
-    archivo.mv(nombrepath, (err) => {
+    archivo.mv(nombrepath, err => {
         if (err)
             return res.status(500).json({
                 ok: false,
@@ -89,6 +89,7 @@ function borraArchivo(nImagen, tipo) {
 
 
     let pathUrl = path.resolve(__dirname, `../uploads/${tipo}/${nImagen}`);
+    console.log('Borrar archivo ' + (pathUrl));
     if (fs.existsSync(pathUrl)) {
         fs.unlinkSync(pathUrl);
     }
@@ -147,7 +148,7 @@ function imagenProducto(id, res, nombreArchivo) {
             });
         }
         if (!productoDb) {
-            orraArchivo(nombreArchivo, 'producto');
+            borraArchivo(nombreArchivo, 'producto');
             return res.status(400).json({
                 ok: false,
                 err: {
