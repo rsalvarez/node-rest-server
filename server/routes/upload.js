@@ -116,7 +116,7 @@ function imagenUsuario(id, res, nombreArchivo) {
             });
         }
 
-        borraArchivo(usuarioDb.img, 'usuario');
+        //borraArchivo(usuarioDb.img, 'usuario');
         usuarioDb.img = nombreArchivo;
 
         usuarioDb.save((err, usuarioGuardado) => {
