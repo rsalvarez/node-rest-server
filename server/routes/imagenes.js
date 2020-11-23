@@ -14,6 +14,7 @@ app.get('/imagen/:tipo/:img', verificaTk, (req, res) => {
     let img = req.params.img;
 
     let pathImagen = path.resolve(__dirname, `../../uploads/${ tipo }/${ img }`);
+    console.log(pathImagen);
 
     if (fs.existsSync(pathImagen)) {
         res.sendFile(pathImagen);
