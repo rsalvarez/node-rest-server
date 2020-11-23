@@ -62,13 +62,12 @@ app.put('/upload/:tipo/:id', function(req, res) {
 
     console.log('Solo nombre : ' + nombreArchivo);
 
-    nombreArchivo = path.resolve(__dirname, `../uploads/${tipo}/${nombreArchivo}`);
+    nombrepath = path.resolve(__dirname, `../uploads/${tipo}/${nombreArchivo}`);
 
-    console.log('Completo : ' + nombreArchivo);
+    console.log('Completo : ' + nombrepath);
 
     //archivo.mv(`server/uploads/${ tipo }/${ nombreArchivo }`, (err) => {
-    archivo.mv(nombreArchivo, (err) => {
-
+    archivo.mv(nombrepath, (err) => {
         if (err)
             return res.status(500).json({
                 ok: false,
