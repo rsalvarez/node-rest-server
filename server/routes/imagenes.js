@@ -9,14 +9,29 @@ const fs = require('fs');
 const path = require('path');
 const { verificaTk } = require('../midellware/autenticacion');
 
-app.get('/imagen/:tipo/:id', verificaTk, (req, res) => {
-
+app.get('/imagen/:tipo/:img', verificaTk, (req, res) => {
     let tipo = req.params.tipo;
+    let img = req.params.img;
+
+    let pathImagen = path.resolve(__dirname, `../../uploads/${ tipo }/${ img }`);
+
+    if (fs.existsSync(pathImagen)) {
+        res.sendFile(pathImagen);
+    } else {
+        let noImagePath = path.resolve(__dirname, '../assets/no-image.jpg');
+        res.sendFile(noImagePath);
+    }
+
+
+
+
+});
+
+/*
+let tipo = req.params.tipo;
     let id = req.params.id;
 
     let pathNoImagen = path.resolve(__dirname, `../assests/no-image.jpg`);
-
-    console.log('No imagen : ' + pathNoImagen);
 
     if (tipo === 'producto') {
         Producto.findById(id, (err, productoDb) => {
@@ -35,9 +50,9 @@ app.get('/imagen/:tipo/:id', verificaTk, (req, res) => {
                 });
             }
 
-            console.log(`El pat relativo : ${tipo}/${productoDb.img}`);
+
             let pathUrl = path.resolve(__dirname, `../uploads/${tipo}/${productoDb.img}`);
-            console.log('el path absoluto ' + pathUrl);
+            //console.log('el path absoluto ' + pathUrl);
             if (fs.existsSync(pathUrl)) {
                 res.sendFile(pathUrl);
             } else {
@@ -61,7 +76,7 @@ app.get('/imagen/:tipo/:id', verificaTk, (req, res) => {
                 });
             }
             let pathUrl = path.resolve(__dirname, `../uploads/${tipo}/${usuarioDb.img}`);
-            console.log(pathUrl);
+
             if (fs.existsSync(pathUrl)) {
                 res.sendFile(pathUrl);
             } else {
@@ -70,8 +85,6 @@ app.get('/imagen/:tipo/:id', verificaTk, (req, res) => {
         })
     }
 
-
-});
-
+*/
 
 module.exports = app;
