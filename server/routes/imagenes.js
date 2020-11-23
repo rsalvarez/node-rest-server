@@ -34,7 +34,7 @@ app.get('/imagen/:tipo/:id', verificaTk, (req, res) => {
                     }
                 });
             }
-            let pathUrl = path.resolve(__dirname, `../uploads/${tipo}/${productoDb.img}`);
+            let pathUrl = path.resolve(__dirname, `${tipo}/${productoDb.img}`);
             console.log('el path' + pathUrl);
             if (fs.existsSync(pathUrl)) {
                 res.sendFile(pathUrl);
