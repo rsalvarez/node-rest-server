@@ -60,7 +60,12 @@ app.put('/upload/:tipo/:id', function(req, res) {
     // 183912kuasidauso-123.jpg
     let nombreArchivo = `${ id }-${ new Date().getMilliseconds()  }.${ extension }`;
 
-    console.log(`server/uploads/${ tipo }/${ nombreArchivo }`);
+    console.log('Solo nombre : ' + nombreArchivo);
+
+    nombreArchivo = path.resolve(__dirname, `../uploads/${tipo}/${nombreArchivo}`);
+
+    console.log('Completo : ' + nombreArchivo);
+
     archivo.mv(`server/uploads/${ tipo }/${ nombreArchivo }`, (err) => {
 
         if (err)
