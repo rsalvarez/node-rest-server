@@ -9,27 +9,9 @@ const fs = require('fs');
 const path = require('path');
 const { verificaTk } = require('../midellware/autenticacion');
 
-app.get('/imagen/:tipo/:img', verificaTk, (req, res) => {
+app.get('/imagen/:tipo/:id', verificaTk, (req, res) => {
+
     let tipo = req.params.tipo;
-    let img = req.params.img;
-
-    let pathImagen = path.resolve(__dirname, `../uploads/${ tipo }/${ img }`);
-    console.log(pathImagen);
-
-    if (fs.existsSync(pathImagen)) {
-        res.sendFile(pathImagen);
-    } else {
-        let noImagePath = path.resolve(__dirname, '../assets/no-image.jpg');
-        res.sendFile(noImagePath);
-    }
-
-
-
-
-});
-
-/*
-let tipo = req.params.tipo;
     let id = req.params.id;
 
     let pathNoImagen = path.resolve(__dirname, `../assests/no-image.jpg`);
@@ -85,6 +67,25 @@ let tipo = req.params.tipo;
             }
         })
     }
+
+
+});
+
+
+/*let tipo = req.params.tipo;
+    let img = req.params.img;
+
+    let pathImagen = path.resolve(__dirname, `../uploads/${ tipo }/${ img }`);
+    console.log(pathImagen);
+
+    if (fs.existsSync(pathImagen)) {
+        res.sendFile(pathImagen);
+    } else {
+        let noImagePath = path.resolve(__dirname, '../assets/no-image.jpg');
+        res.sendFile(noImagePath);
+    }*/
+/*
+
 
 */
 

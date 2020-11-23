@@ -116,7 +116,7 @@ function imagenUsuario(id, res, nombreArchivo) {
             });
         }
 
-        //borraArchivo(usuarioDb.img, 'usuario');
+        borraArchivo(usuarioDb.img, 'usuario');
         usuarioDb.img = nombreArchivo;
 
         usuarioDb.save((err, usuarioGuardado) => {
@@ -156,7 +156,7 @@ function imagenProducto(id, res, nombreArchivo) {
                 }
             });
         }
-        //borraArchivo(productoDb.img, 'producto')
+        borraArchivo(productoDb.img, 'producto')
         productoDb.img = nombreArchivo;
 
         productoDb.save((err, productoDbGrabado) => {
